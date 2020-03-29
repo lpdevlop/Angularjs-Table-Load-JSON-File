@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="tut">
+<head>
+<title>AngularJS Totorial -Fetching JSON</title>
+  
+    	    
+            <script type="text/javascript" src="angular_v1.6.0.js"></script>	    	   
+	        <script type="text/javascript" src="resource/js/form.js"></script>
+<script type="text/javascript">
+     var app=angular.module("tut",[]);
+     app.controller("myCtrl",function($scope,$http){
+     $http.get("db.json")
+     .then(function(response){
+        $scope.db=response.data;
+     });
+ 
+ });
+</script>    
+</head>
+<body>
+<h4>Fectching JSON With GET</h4>
+<div ng-controller="myCtrl">
+<table border="1">
+<tr>
+                 <th width="10%">ID</th>
+                <th width="10%">User City</th>
+                <th width="10%">Name</th>
+                <th width="10%">Pass</th>
+                <th width="10%">Email</th>
+</tr>
+
+            <tr ng-repeat="dbs in db ">
+                <td> {{ dbs.id }} </td>
+                <td> {{ dbs.namecol }} </td>
+                <td> {{ dbs.username }} </td>
+                <td> {{ dbs.upass }} </td>
+                <td> {{ dbs.eamil }} </td>
+            </tr>
+        </table>
+</div>
+</body>
+</html>
